@@ -19,7 +19,7 @@
 /**
  * rs485_receive_disable(); \
  * while (HAL_UART_Transmit( \
- *         &Uart1Handle, \
+ *         &huart1, \
  *         buf, len, \
  *         0XFFFF \
  *     ) != HAL_OK \

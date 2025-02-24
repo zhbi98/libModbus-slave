@@ -74,7 +74,7 @@ void mb_timer_tick_callback()
     /*If the counter is an unsigned number, 
     you need to use judgement, otherwise it is 
     easy to have an abnormal negative value*/
-    
+
     if (tick50us_val > 0) return;
 
     /*tick50us_val = MB_TIMEOUT_INVALID;*/

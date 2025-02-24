@@ -20,9 +20,6 @@
  *  STATIC VARIABLES
  **********************/
 
-static uint16_t hello_1 = 1900;
-static uint16_t hello_2 = 1902;
-
 /**
  * Note that the Modbus RTU protocol uses 16-bit data transmission 
  * (whether it is a read-write coil, read discrete input, 
@@ -33,11 +30,23 @@ static uint16_t hello_2 = 1902;
  */
 
 static uint16_t * const data_p[REG_COUNT] = {
-    &hello_1, &hello_2, NULL, NULL, NULL, 
+    /*0*/
     NULL, NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+
+    /*8*/
+    NULL, NULL, NULL, NULL, 
+
+    NULL, NULL, NULL, NULL, 
+
+    /*16*/
     NULL, NULL, NULL, NULL, NULL, 
-    NULL, NULL, NULL, NULL, NULL,
-    NULL, NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+
+    /*24*/
+    NULL, 
+
+    /*25*/
     NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, NULL,
@@ -241,14 +250,13 @@ mb_res_t mb_rtu_write_data(uint8_t * pdu_data_frame_p,
             pdu_data_frame_p[i * 2 + 1] << 0;
     }
 
-#if 0 /*Apply to motor drive*/
-    MotorDrive.mod = ModeDigitalSpeed;
-    MotorDriveWriteSpeed(
-    51200 * data_p[index]); /*60rpm*/
-#endif
-
     register_start_nr = index;
     register_end_nr = index + num;
+
+    info("start:%d, end:%d", 
+        register_start_nr, 
+        register_end_nr
+    );
 
     return MB_RES_NONE;
 }
