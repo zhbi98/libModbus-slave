@@ -16,17 +16,6 @@
 
 #define MB_SEND_BYTE(buf, len)
 
-/**
- * rs485_receive_disable(); \
- * while (HAL_UART_Transmit( \
- *         &huart1, \
- *         buf, len, \
- *         0XFFFF \
- *     ) != HAL_OK \
- * ); \
- * rs485_receive_enable();
- */
-
 /**********************
  *  STATIC VARIABLES
  **********************/
